@@ -1,0 +1,4 @@
+# .vbox e ISOs
+*.vdi
+*.iso
+*.ova
