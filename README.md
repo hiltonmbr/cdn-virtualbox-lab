@@ -1,7 +1,7 @@
 # 📦 VirtualBox Lab
 
-### **Tutorial completo e prático de Oracle VM VirtualBox**
-Do zero à automação de laboratórios locais com o Hypervisor Tipo 2 mais popular do mundo.
+### **Complete hands-on Oracle VM VirtualBox tutorial**
+From zero to local lab automation with the world's most popular Type 2 Hypervisor.
 
 ![VirtualBox](https://img.shields.io/badge/VirtualBox-7.x-1868CE?logo=virtualbox&logoColor=white)
 ![Vagrant](https://img.shields.io/badge/Vagrant-Automated_VMs-1563FF?logo=vagrant&logoColor=white)
@@ -10,169 +10,172 @@ Do zero à automação de laboratórios locais com o Hypervisor Tipo 2 mais popu
 
 ---
 
-## 🎯 O que é este repositório?
+## 🎯 What is this repository?
 
-Um **laboratório hands-on** para aprender Virtualização Local com VirtualBox. Ideal para estudantes de Ciência de Dados, Engenharia e TI que precisam criar ambientes complexos (como clusters e servidores) nos seus próprios computadores sem formatá-los. 
+A **hands-on lab** for learning Local Virtualization with VirtualBox. Ideal for Data Science, Engineering, and IT students who need to create complex environments (like clusters and servers) on their own computers without formatting them.
 
-Cada conceito é ensinado com:
+Each concept is taught with:
 
-- 📖 **Documentação rica** — explicações detalhadas sobre discos virtuais, redes e integração com o Host.
-- 🧪 **Labs práticos** — configurações passo a passo, incluindo bancos de dados isolados e simulação de redes.
-- 📜 **Exemplos de Automação** — Infraestrutura como código utilizando Vagrant para provisionar VMs rapidamente.
+- 📖 **Rich documentation** — detailed explanations about virtual disks, networks, and Host integration.
+- 🧪 **Practical labs** — step-by-step setups, including isolated databases and network simulations.
+- 📜 **Automation examples** — Infrastructure as Code using Vagrant to quickly provision VMs.
 
-> **Público-alvo:** Profissionais e estudantes (Ciência de Dados para Negócios) que precisam rodar bancos de dados, clusters Spark/Hadoop e ambientes Linux a partir de máquinas Windows ou macOS.
+> **Target audience:** Professionals and students who need to run databases, Spark/Hadoop clusters, and Linux environments from Windows or macOS machines.
 
 ---
 
-## ⚡ Quick Start (5 minutos)
+## ⚡ Quick Start (5 minutes)
 
-Se você já tem o VirtualBox e o Vagrant instalados, pode subir sua primeira VM automatizada agora mesmo:
+If you already have VirtualBox and Vagrant installed, you can spin up your first automated VM right now:
 
 ```bash
-# 1. Crie um diretório para o teste
-mkdir lab-teste && cd lab-teste
+# 1. Create a test directory
+mkdir lab-test && cd lab-test
 
-# 2. Inicialize um ambiente Vagrant básico com Ubuntu Server
+# 2. Initialize a basic Vagrant environment with Ubuntu Server
 vagrant init ubuntu/focal64
 
-# 3. Suba a máquina virtual (o VirtualBox fará tudo no background)
+# 3. Start the virtual machine (VirtualBox handles everything in the background)
 vagrant up
 
-# 4. Acesse a máquina via SSH
+# 4. Access the machine via SSH
 vagrant ssh
 
-# 5. Dentro da VM, verifique o SO
+# 5. Inside the VM, check the OS
 cat /etc/os-release
 ```
 
-**Parabéns!** 🎉 Você acabou de provisionar e acessar um servidor Linux completo dentro do seu computador.
+**Congratulations!** 🎉 You've just provisioned and accessed a full Linux server inside your computer.
 
-> 🖥️ **Não tem o VirtualBox instalado ou prefere a interface gráfica?** Comece pela [documentação de instalação](docs/01-instalacao-e-fundamentos.md).
+> 🖥️ **Don't have VirtualBox installed or prefer the GUI?** Start with the [installation documentation](docs/01-installation-and-fundamentals.md).
 
 ---
 
-## ⚙️ Pré-requisitos
+## ⚙️ Prerequisites
 
-| Requisito | Detalhes |
+| Requirement | Details |
 |---|---|
-| **Computador (Host)** | Notebook ou Desktop com Windows, Linux ou macOS (Intel)* |
-| **CPU** | Processador AMD (AMD-V) ou Intel (VT-x) com virtualização ativada na BIOS/UEFI |
-| **RAM** | Mínimo 8 GB (recomendado: 16 GB+ para rodar múltiplas VMs com fluidez) |
-| **Disco** | 20 GB a 50 GB livres para alocar discos virtuais (`.vdi`) |
-| **Imagens (ISO)** | Arquivo ISO de um sistema (ex: Ubuntu Server 24.04 LTS) |
+| **Computer (Host)** | Laptop or Desktop with Windows, Linux, or macOS (Intel)* |
+| **CPU** | AMD (AMD-V) or Intel (VT-x) processor with virtualization enabled in BIOS/UEFI |
+| **RAM** | Minimum 8 GB (recommended: 16 GB+ for running multiple VMs smoothly) |
+| **Disk** | 20 GB to 50 GB free for allocating virtual disks (`.vdi`) |
+| **Images (ISO)** | ISO file of a system (e.g., Ubuntu Server 24.04 LTS) |
 
-> ⚠️ **Atenção Usuários de macOS (Apple Silicon M1/M2/M3/M4):** O VirtualBox possui limitações em processadores ARM. Para MacBooks com Apple Silicon, recomenda-se o uso do **UTM** (QEMU) ou **Parallels Desktop** com imagens ARM64.
+> ⚠️ **macOS Users (Apple Silicon M1/M2/M3/M4):** VirtualBox has limitations on ARM processors. For Apple Silicon MacBooks, we recommend using **UTM** (QEMU) or **Parallels Desktop** with ARM64 images.
 
 ---
 
-## 🗺️ Mapa de Aprendizagem
+## 🗺️ Learning Map
 
-O conteúdo está organizado em **documentação conceitual** + **labs práticos**:
+The content is organized into **conceptual documentation** + **practical labs**:
 
-### 📖 Documentação
+### 📖 Documentation
 
-| # | Módulo | Tópicos | Link |
+| # | Module | Topics | Link |
 |---|---|---|---|
-| 01 | **Fundamentos & Instalação** | Hypervisor Tipo 2, Extension Pack, Hardware, VBox vs Proxmox | [📖 Ler](docs/01-instalacao-e-fundamentos.md) |
-| 02 | **Anatomia de uma VM** | Arquivos `.vbox` e `.vdi`, discos dinâmicos vs fixos | [📖 Ler](docs/02-anatomia-da-vm.md) |
-| 03 | **Modos de Rede** | NAT, Bridge, Host-Only, Rede Interna e dupla interface | [📖 Ler](docs/03-modos-de-rede.md) |
-| 04 | **Ferramentas Avançadas** | Snapshots e Guest Additions (integração Host-Guest) | [📖 Ler](docs/04-ferramentas-avancadas.md) |
-| 05 | **Automação com Vagrant** | Vagrantfile, provisionamento, IaC básico para ambientes de dev | [📖 Ler](docs/05-automacao-vagrant.md) |
+| 01 | **Fundamentals & Installation** | Type 2 Hypervisor, Extension Pack, Hardware, VBox vs Proxmox | [📖 Read](docs/01-installation-and-fundamentals.md) |
+| 02 | **VM Anatomy** | `.vbox` and `.vdi` files, dynamic vs fixed disks | [📖 Read](docs/02-vm-anatomy.md) |
+| 03 | **Network Modes** | NAT, Bridge, Host-Only, Internal Network, dual interface | [📖 Read](docs/03-network-modes.md) |
+| 04 | **Advanced Tools** | Snapshots and Guest Additions (Host-Guest integration) | [📖 Read](docs/04-advanced-tools.md) |
+| 05 | **Vagrant Automation** | Vagrantfile, provisioning, basic IaC for dev environments | [📖 Read](docs/05-vagrant-automation.md) |
 
-### 🧪 Labs Práticos
+### 🧪 Practical Labs
 
-| # | Lab | Abordagem | O que faz | Tempo | Link |
+| # | Lab | Approach | What it does | Time | Link |
 |---|---|---|---|---|---|
-| 01 | **A Primeira VM** | Básica | Criar VM Ubuntu Server do zero via interface gráfica, montar ISO | 20 min | [🧪 Ir](labs/lab-01-primeira-vm/README.md) |
-| 02 | **Banco de Dados Isolado** | Intermediário | VM com PostgreSQL conectada ao Host (DataGrip/DBeaver) via Bridge/Host-Only | 30 min | [🧪 Ir](labs/lab-02-banco-isolado/README.md) |
-| 03 | **Simulando um Desastre** | Administração | Quebrar o Python nativo da VM e recuperá-la instantaneamente com Snapshots | 15 min | [🧪 Ir](labs/lab-03-teste-desastre/README.md) |
-| 04 | **Rede Privada de VMs** | Avançado | Isolar um servidor Web e um servidor de BD numa Rede Interna | 40 min | [🧪 Ir](labs/lab-04-rede-privada/README.md) |
-| 05 | **Vagrant e IaC** | DevOps | Subir e configurar ambientes reprodutíveis sem tocar na interface do VBox | 25 min | [🧪 Ir](labs/lab-05-vagrant-iac/README.md) |
+| 01 | **The First VM** | Basic | Create an Ubuntu Server VM from scratch via GUI, mount ISO | 20 min | [🧪 Go](labs/lab-01-first-vm/README.md) |
+| 02 | **Isolated Database** | Intermediate | VM with PostgreSQL connected to Host (DataGrip/DBeaver) via Bridge/Host-Only | 30 min | [🧪 Go](labs/lab-02-isolated-database/README.md) |
+| 03 | **Simulating a Disaster** | Administration | Break the native Python and instantly recover it with Snapshots | 15 min | [🧪 Go](labs/lab-03-disaster-test/README.md) |
+| 04 | **Private VM Network** | Advanced | Isolate a Web server and a DB server on an Internal Network | 40 min | [🧪 Go](labs/lab-04-private-network/README.md) |
+| 05 | **Vagrant and IaC** | DevOps | Spin up and configure reproducible environments without touching the VBox GUI | 25 min | [🧪 Go](labs/lab-05-vagrant-iac/README.md) |
 
 ---
 
-## 📂 Estrutura do Repositório
+## 📂 Repository Structure
 
 ```text
 cdn-virtualbox-lab/
 │
-├── 📖 docs/                                 # Documentação conceitual
-│   ├── 01-instalacao-e-fundamentos.md
-│   ├── 02-anatomia-da-vm.md
-│   ├── 03-modos-de-rede.md
-│   ├── 04-ferramentas-avancadas.md
-│   └── 05-automacao-vagrant.md
+├── 📖 docs/                                 # Conceptual documentation
+│   ├── 01-installation-and-fundamentals.md
+│   ├── 02-vm-anatomy.md
+│   ├── 03-network-modes.md
+│   ├── 04-advanced-tools.md
+│   └── 05-vagrant-automation.md
 │
-├── 🧪 labs/                                 # Exercícios práticos guiados
-│   ├── lab-01-primeira-vm/
-│   ├── lab-02-banco-isolado/
-│   ├── lab-03-teste-desastre/
-│   ├── lab-04-rede-privada/
+├── 🧪 labs/                                 # Guided hands-on exercises
+│   ├── lab-01-first-vm/
+│   ├── lab-02-isolated-database/
+│   ├── lab-03-disaster-test/
+│   ├── lab-04-private-network/
 │   └── lab-05-vagrant-iac/
 │
-├── 📜 scripts/                              # Scripts auxiliares e exemplos
+├── 📜 scripts/                              # Helper scripts and examples
 │   └── setup-host-only.sh
 │
-├── 📋 .gitignore                            # Arquivos pesados omitidos (ISO/VDI)
-└── 📋 README.md                             # ← Você está aqui
+├── 📋 .gitignore                            # Heavy files omitted (ISO/VDI)
+├── 📋 Makefile                              # Automation commands
+├── 📋 LICENSE                               # MIT License
+├── 📋 CONTRIBUTING.md                       # Contribution guide
+└── 📋 README.md                             # ← You are here
 ```
 
 ---
 
-## 🔑 Conceitos-Chave
+## 🔑 Key Concepts
 
-| Conceito | Descrição |
+| Concept | Description |
 | :--- | :--- |
-| **🖥️ Hypervisor Tipo 2** | Diferente do Proxmox, o VirtualBox roda **sobre** o seu sistema operacional (Windows/Mac/Linux). É um "Hosted Hypervisor". |
-| **💾 .vdi (Virtual Disk Image)** | O formato padrão de disco do VirtualBox. Pode ser de *Alocação Dinâmica* (cresce sob demanda) ou *Tamanho Fixo* (melhor I/O). |
-| **🌐 NAT (Padrão)** | A VM acessa a internet "escondida" atrás do Host. O Host **não** consegue acessá-la facilmente (útil apenas para navegar e baixar pacotes). |
-| **🌐 Placa em Bridge** | A VM conecta-se diretamente à placa física (Wi-Fi/Cabo) do Host. Recebe IP do seu roteador, como se fosse um novo computador na sua casa. |
-| **🌐 Rede Host-Only** | Cria uma placa virtual no Host conectada diretamente à VM. Perfeito para manter uma conexão SSH estável do seu notebook para a VM, mas sem internet na VM. |
-| **📸 Snapshots** | A "máquina do tempo". Congela o estado exato da VM (RAM e Disco) permitindo reversão imediata. Ideal usar antes de configurações perigosas. |
-| **🎁 Guest Additions** | Pacote de drivers instalado **dentro** da VM. Habilita redimensionamento fluido de tela, área de transferência (Copiar/Colar) e pastas compartilhadas. |
-| **🤖 Vagrant** | Ferramenta da HashiCorp para construir e manter ambientes virtuais reprodutíveis através de arquivos declarativos (`Vagrantfile`). |
+| **🖥️ Type 2 Hypervisor** | Unlike Proxmox, VirtualBox runs **on top of** your operating system (Windows/Mac/Linux). It is a "Hosted Hypervisor". |
+| **💾 .vdi (Virtual Disk Image)** | VirtualBox's default disk format. Can be *Dynamic Allocation* (grows on demand) or *Fixed Size* (better I/O). |
+| **🌐 NAT (Default)** | The VM accesses the internet "hidden" behind the Host. The Host **cannot** easily access it (useful only for browsing and downloading packages). |
+| **🌐 Bridge Mode** | The VM connects directly to the Host's physical adapter (Wi-Fi/Cable). It receives an IP from your router, like a new computer on your home network. |
+| **🌐 Host-Only Network** | Creates a virtual adapter on the Host directly connected to the VM. Perfect for maintaining a stable SSH connection from your laptop to the VM, but without internet on the VM. |
+| **📸 Snapshots** | The "time machine". Freezes the exact state of the VM (RAM and Disk) allowing immediate rollback. Ideal to use before dangerous configurations. |
+| **🎁 Guest Additions** | Driver package installed **inside** the VM. Enables fluid screen resizing, clipboard (Copy/Paste), and shared folders. |
+| **🤖 Vagrant** | HashiCorp tool for building and maintaining reproducible virtual environments through declarative files (`Vagrantfile`). |
 
 ---
 
-## 📝 Cheatsheet Rápido (VBoxManage e Vagrant)
+## 📝 Quick Cheatsheet (VBoxManage and Vagrant)
 
 ```bash
 # ══════════════════════════════════════════════
 #  📋 VIRTUALBOX & VAGRANT — CHEATSHEET
 # ══════════════════════════════════════════════
 
-# ── VBoxManage (CLI oficial do VirtualBox) ──
-vboxmanage list vms                            # Lista todas as VMs criadas
-vboxmanage list runningvms                     # Lista VMs em execução
-vboxmanage startvm "Nome-da-VM" --type headless # Inicia a VM sem interface gráfica (background)
-vboxmanage controlvm "Nome-da-VM" poweroff     # Desliga a VM forçadamente
-vboxmanage snapshot "Nome-da-VM" take "Backup" # Cria um snapshot da VM
-vboxmanage snapshot "Nome-da-VM" restore "Backup" # Restaura o snapshot
+# ── VBoxManage (Official VirtualBox CLI) ──
+vboxmanage list vms                            # List all created VMs
+vboxmanage list runningvms                     # List running VMs
+vboxmanage startvm "VM-Name" --type headless   # Start VM without GUI (background)
+vboxmanage controlvm "VM-Name" poweroff        # Force shut down the VM
+vboxmanage snapshot "VM-Name" take "Backup"    # Create a VM snapshot
+vboxmanage snapshot "VM-Name" restore "Backup" # Restore the snapshot
 
-# ── Vagrant (IaC para VirtualBox) ──
-vagrant init ubuntu/focal64                    # Cria um Vagrantfile com Ubuntu 20.04
-vagrant up                                     # Baixa a imagem (se necessário) e sobe a VM
-vagrant ssh                                    # Acessa a VM provisionada via SSH
-vagrant halt                                   # Desliga a VM graciosamente
-vagrant reload                                 # Reinicia a VM (aplicando mudanças)
-vagrant destroy -f                             # Apaga a VM e libera todos os recursos
-vagrant status                                 # Mostra o status atual do ambiente
+# ── Vagrant (IaC for VirtualBox) ──
+vagrant init ubuntu/focal64                    # Create a Vagrantfile with Ubuntu 20.04
+vagrant up                                     # Download the image (if needed) and start the VM
+vagrant ssh                                    # Access the provisioned VM via SSH
+vagrant halt                                   # Shut down the VM gracefully
+vagrant reload                                 # Reboot the VM (applying changes)
+vagrant destroy -f                             # Delete the VM and free all resources
+vagrant status                                 # Show the current environment status
 ```
 
 ---
 
-## 📚 Referências
+## 📚 References
 
-- [Oracle VM VirtualBox User Manual](https://www.virtualbox.org/manual/UserManual.html) — Documentação oficial abrangente.
-- [Vagrant — VirtualBox Provider](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox) — Automação de ambientes.
-- SILBERSCHATZ, A.; GALVIN, P. B.; GAGNE, G. **Operating System Concepts**. 10ª ed. Wiley, 2018. Cap. 18.
-
----
-
-## 📄 Licença
-
-Este material é de uso educacional. Criado para a disciplina de **Ciência de Dados para Negócios** — UFPB.
+- [Oracle VM VirtualBox User Manual](https://www.virtualbox.org/manual/UserManual.html) — Comprehensive official documentation.
+- [Vagrant — VirtualBox Provider](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox) — Environment automation.
+- SILBERSCHATZ, A.; GALVIN, P. B.; GAGNE, G. **Operating System Concepts**. 10th ed. Wiley, 2018. Ch. 18.
 
 ---
 
-> **📦 O Laboratório Pessoal: Teste infraestruturas completas de Big Data no conforto do seu notebook, sem medo de errar.**
+## 📄 License
+
+This material is for educational use. Created for the **Data Science for Business** course — UFPB.
+
+---
+
+> **📦 The Personal Lab: Test complete Big Data infrastructures from the comfort of your laptop, without fear of breaking anything.**

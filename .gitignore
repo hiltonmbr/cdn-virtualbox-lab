@@ -1,4 +1,4 @@
-# .vbox e ISOs
+# .vbox and ISOs
 *.vdi
 *.iso
 *.ova
